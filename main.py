@@ -3,6 +3,7 @@ from telegram.ext import Application, CommandHandler
 from handlers.start import start
 from handlers.tap import tap
 from handlers.trade import buy, sell
+from handlers.portfolio import portfolio
 from handlers.market import market
 from handlers.leaderboard import leaderboard
 from db.database import init_db
@@ -17,6 +18,7 @@ def main():
     application.add_handler(CommandHandler("buy", buy))
     application.add_handler(CommandHandler("sell", sell))
     application.add_handler(CommandHandler("leaderboard", leaderboard))
+    application.add_handler(CommandHandler("portfolio", portfolio))
 
     application.run_polling()
 
