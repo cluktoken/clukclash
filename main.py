@@ -1,5 +1,6 @@
 import os
 import asyncio
+import nest_asyncio
 from telegram.ext import Application, CommandHandler
 from handlers.start import start
 from handlers.tap import tap
