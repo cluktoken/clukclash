@@ -6,7 +6,7 @@ from handlers.trade import buy, sell
 from handlers.portfolio import portfolio
 from handlers.market import market
 from handlers.leaderboard import leaderboard
-from db.database import init_db
+from db.database import init_db, get_user_portfolio, get_price
 
 def main():
     init_db()
