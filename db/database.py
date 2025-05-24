@@ -1,5 +1,7 @@
 import sqlite3
 from utils.price_simulator import get_price
+from datetime import datetime, timedelta
+
 
 DB_PATH = "db/crypto_game.db"
 
@@ -85,3 +87,23 @@ def init_db():
     conn.commit()
     conn.close()
 
+def give_daily_bonus(user_id):
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    c.execute("SELECT last_daily FROM users WHERE id = ?", (user_id,))
+    result = c.fetchone()
+
+    now = datetime.utcnow()
+    if result and result[0]:
+        last_claim = datetime.fromisoformat(result[0])
+        if now - last_claim < timedelta(hours=24):
+            next_claim = last_claim + timedelta(hours=24)
+            wait_time = (next_claim - now).seconds // 3600
+            return f"⏳ You've already claimed your daily reward. Try again in ~{wait_time}h."
+
+    # reward
+    reward = 25
+    c.execute("UPDATE users SET bits = bits + ?, last_daily = ? WHERE id = ?", (reward, now.isoformat(), user_id))
+    conn.commit()
+    conn.close()
+    return f"🎁 You claimed your daily bonus: {reward} $BITS!"
