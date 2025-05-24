@@ -1,4 +1,5 @@
 import os
+import asyncio
 from telegram.ext import Application, CommandHandler
 from handlers.start import start
 from handlers.tap import tap
@@ -22,5 +23,13 @@ async def main():
 
     await application.run_polling()
 
-if __name__ == '__main__':
-    asyncio.run(main())
+if __name__ == "__main__":
+    try:
+        asyncio.run(main())
+    except RuntimeError as e:
+        if str(e) == "This event loop is already running":
+            import nest_asyncio
+            nest_asyncio.apply()
+            asyncio.get_event_loop().run_until_complete(main())
+        else:
+            raise
