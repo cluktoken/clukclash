@@ -61,3 +61,11 @@ def get_leaderboard():
     result = c.fetchall()
     conn.close()
     return result
+
+def get_user_portfolio(user_id):
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    c.execute("SELECT bits, cash FROM users WHERE id = ?", (user_id,))
+    result = c.fetchone()
+    conn.close()
+    return result
