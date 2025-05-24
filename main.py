@@ -7,9 +7,7 @@ from handlers.market import market
 from handlers.leaderboard import leaderboard
 from db.database import init_db
 
-import asyncio
-
-async def main():
+def main():
     init_db()
     application = Application.builder().token(os.getenv("BOT_TOKEN")).build()
 
