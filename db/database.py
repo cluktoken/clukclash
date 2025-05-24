@@ -69,3 +69,19 @@ def get_user_portfolio(user_id):
     result = c.fetchone()
     conn.close()
     return result
+
+def init_db():
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    c.execute("""
+        CREATE TABLE IF NOT EXISTS users (
+            id INTEGER PRIMARY KEY,
+            username TEXT,
+            bits INTEGER DEFAULT 0,
+            cash REAL DEFAULT 1000,
+            last_daily TEXT
+        )
+    """)
+    conn.commit()
+    conn.close()
+
