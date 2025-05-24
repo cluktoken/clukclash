@@ -9,7 +9,7 @@ from db.database import init_db
 
 import asyncio
 
-async def setup_bot():
+async def main():
     init_db()
     application = Application.builder().token(os.getenv("BOT_TOKEN")).build()
 
