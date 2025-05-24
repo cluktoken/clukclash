@@ -9,6 +9,10 @@ from handlers.market import market
 from handlers.leaderboard import leaderboard
 from db.database import init_db, get_user_portfolio, get_price
 
+
+DB_PATH = "/data/crypto_game.db"
+
+
 def main():
     init_db()
     application = Application.builder().token(os.getenv("BOT_TOKEN")).build()
