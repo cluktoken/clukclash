@@ -22,12 +22,7 @@ async def setup_bot():
     application.add_handler(CommandHandler("sell", sell))
     application.add_handler(CommandHandler("leaderboard", leaderboard))
 
-    await application.initialize()
-    await application.start()
-    print("🐔 Cluk Clash bot is now running...")
-    await application.updater.start_polling()
-    await application.updater.idle()
+    application.run_polling()
 
-if __name__ == '__main__':
-    nest_asyncio.apply()
-    asyncio.get_event_loop().run_until_complete(setup_bot())
+if __name__ == "__main__":
+    main()
