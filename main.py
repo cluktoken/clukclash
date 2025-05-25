@@ -1,4 +1,6 @@
 import os
+import migrate_pet
+
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler
 from handlers.start import start
 from handlers.tap import tap
@@ -77,7 +79,6 @@ def main():
     application.add_handler(CommandHandler("craftmenu", craft_menu))
     application.add_handler(CallbackQueryHandler(handle_craft_click, pattern="^craft_"))
     application.add_handler(CommandHandler("trade", trade))
-import migrate_pet
 
     
     application.run_polling()
