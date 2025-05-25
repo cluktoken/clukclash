@@ -10,6 +10,13 @@ from handlers.leaderboard import leaderboard
 from db.database import init_db, get_user_portfolio, get_price
 from handlers.inventory import inventory
 from handlers.levelup import levelup
+from handlers.profile import profile
+from handlers.cluckonomy import cluckonomy
+from handlers.dividends import dividends
+from handlers.passive_income import passive_income
+from handlers.title import set_title
+from handlers.skin import set_skin
+
 
 
 DB_PATH = "/data/crypto_game.db"
@@ -29,7 +36,16 @@ def main():
     application.add_handler(CommandHandler("portfolio", portfolio))
     application.add_handler(CommandHandler("inventory", inventory))
     application.add_handler(CommandHandler("levelup", levelup))
+    application.add_handler(CommandHandler("profile", profile))
+    application.add_handler(CommandHandler("cluckonomy", cluckonomy))
+    application.add_handler(CommandHandler("dividends", dividends))
+    application.add_handler(CommandHandler("passive", passive_income))
+    application.add_handler(CommandHandler("title", set_title))
+    application.add_handler(CommandHandler("skin", set_skin))
 
+
+
+    
     application.run_polling()
 
 if __name__ == "__main__":
