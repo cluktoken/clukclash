@@ -19,6 +19,22 @@ ITEM_DESCRIPTIONS = {
     "Cluck Relic 💎🐔": "The rarest artifact. Grants access to /clucklair."
 }
 
+RARITY_LOOT = {
+    "common": [
+        "Mystery Egg 🥚", "Rusty Beak 🦴", "Corn Nugget 🌽", "Shiny Pebble 💎", "Feather Scrap 🪶"
+    ],
+    "rare": [
+        "Golden Feather ✨", "Worm Jerky 🪱", "Trader Hat 🎩", "Mini Moon Rock 🌕", "Crypto Yolk 🥏"
+    ],
+    "epic": [
+        "Ancient Scroll 📜", "Silver Nest 🪺", "Egg of Insight 🧠", "Robo Egg 🤖", "Greedy Goblet 🏆"
+    ],
+    "legendary": [
+        "Giga Feather 🪶", "Zap Seed ⚡", "Lunar Lantern 🏮", "Vanity Mirror 🪞", "Elite Badge 🎖️"
+    ]
+}
+
+
 async def iteminfo(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not context.args:
         await update.message.reply_text("❓ Usage: /iteminfo <item name>")
