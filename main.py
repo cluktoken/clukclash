@@ -15,6 +15,7 @@ from handlers.cluckonomy import cluckonomy
 from handlers.dividends import dividends
 from handlers.passive_income import passive_income
 from handlers.title import set_title
+from handlers.loot_features import open_loot, sell_all
 from handlers.skin import set_skin
 from db.database import upgrade_schema
 upgrade_schema()
@@ -43,6 +44,8 @@ def main():
     application.add_handler(CommandHandler("passive", passive_income))
     application.add_handler(CommandHandler("title", set_title))
     application.add_handler(CommandHandler("skin", set_skin))
+    application.add_handler(CommandHandler("open", open_loot))
+    application.add_handler(CommandHandler("sellall", sell_all))
 
 
 
