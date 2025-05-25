@@ -13,6 +13,20 @@ CRAFTING_RECIPES = {
     ("Mystery Egg 🥚", "Corn Nugget 🌽", "Crypto Yolk 🥏"): "Omega Omelette 🍳",
 }
 
+RARITY_LOOT = {
+    "common": ["Mystery Egg 🥚", "Rusty Beak 🦴", "Corn Nugget 🌽", "Shiny Pebble 💎", "Feather Scrap 🪶"],
+    "rare": ["Golden Feather ✨", "Worm Jerky 🪱", "Trader Hat 🎩", "Mini Moon Rock 🌕", "Crypto Yolk 🥏"],
+    "epic": ["Ancient Scroll 📜", "Silver Nest 🪺", "Egg of Insight 🧠", "Robo Egg 🤖", "Greedy Goblet 🏆"],
+    "legendary": ["Giga Feather 🪶", "Zap Seed ⚡", "Lunar Lantern 🏮", "Vanity Mirror 🪞", "Elite Badge 🎖️"]
+}
+
+def determine_rarity(item_name):
+    for rarity, items in RARITY_LOOT.items():
+        if item_name in items:
+            return rarity
+    return "common"
+
+
 def remove_items(user_id, items):
     conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
