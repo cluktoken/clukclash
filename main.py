@@ -15,8 +15,12 @@ from handlers.cluckonomy import cluckonomy
 from handlers.dividends import dividends
 from handlers.passive_income import passive_income
 from handlers.title import set_title
+from handlers.cluck_engagement_features import craft, mission, pet_marketplace
+
 from handlers.loot_features import open_loot, sell_all
 from handlers.skin import set_skin
+from handlers.loot_addons_clucklair_iteminfo_crates import iteminfo, clucklair, open_common, open_epic
+
 from db.database import upgrade_schema
 from handlers.help_command import help_command
 from handlers.cluck_pet_system_full import (
@@ -60,8 +64,14 @@ def main():
     application.add_handler(CommandHandler("pet_marketplace", pet_marketplace))
     application.add_handler(CommandHandler("pet_fusion", pet_fusion))
     application.add_handler(CommandHandler("help", help_command))
-
-
+    application.add_handler(CommandHandler("reroll", reroll))
+    application.add_handler(CommandHandler("collection", collection))
+    application.add_handler(CommandHandler("iteminfo", iteminfo))
+    application.add_handler(CommandHandler("clucklair", clucklair))
+    application.add_handler(CommandHandler("open_common", open_common))
+    application.add_handler(CommandHandler("open_epic", open_epic))
+    application.add_handler(CommandHandler("craft", craft))
+    application.add_handler(CommandHandler("mission", mission))
 
     
     application.run_polling()
