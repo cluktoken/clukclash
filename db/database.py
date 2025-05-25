@@ -144,3 +144,20 @@ def reset_daily(user_id):
     conn.commit()
     conn.close()
 
+def upgrade_schema():
+    conn = sqlite3.connect("/data/crypto_game.db")
+    c = conn.cursor()
+
+    try: c.execute("ALTER TABLE users ADD COLUMN title TEXT")
+    except sqlite3.OperationalError: pass
+
+    try: c.execute("ALTER TABLE users ADD COLUMN skin TEXT")
+    except sqlite3.OperationalError: pass
+
+    try: c.execute("ALTER TABLE users ADD COLUMN last_tap TEXT")
+    except sqlite3.OperationalError: pass
+
+    conn.commit()
+    conn.close()
+
+
