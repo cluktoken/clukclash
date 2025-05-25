@@ -7,7 +7,7 @@ from handlers.daily import daily
 from handlers.portfolio import portfolio
 from handlers.market import market
 from handlers.leaderboard import leaderboard
-from db.database import init_db, get_user_portfolio, get_price
+from db.database import init_db, get_user_portfolio, get_price, upgrade_schema
 from handlers.inventory import inventory
 from handlers.levelup import levelup
 from handlers.profile import profile
@@ -23,8 +23,6 @@ from handlers.cluck_expansion_missions_trading_ui import daily_missions, craft_m
 from handlers.loot_features import open_loot, sell_all, determine_rarity
 from handlers.skin import set_skin
 from handlers.loot_addons_clucklair_iteminfo_crates import iteminfo, clucklair, open_common, open_epic
-
-from db.database import upgrade_schema
 from handlers.help_command import help_command
 from handlers.cluck_pet_system_full import (
     pet, feed, namepet, dresspet, pet_battle,
