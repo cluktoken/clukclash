@@ -16,7 +16,8 @@ from handlers.dividends import dividends
 from handlers.passive_income import passive_income
 from handlers.title import set_title
 from handlers.skin import set_skin
-
+from db.database import upgrade_schema
+upgrade_schema()
 
 
 DB_PATH = "/data/crypto_game.db"
