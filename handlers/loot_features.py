@@ -84,8 +84,7 @@ async def open_loot(update: Update, context: ContextTypes.DEFAULT_TYPE):
         effect = "🔓 You unlocked the hidden /clucklair!"
 
     await update.message.reply_text(
-        f"🪙 You opened *{used_item}*...
-{effect or 'It shimmered, but nothing happened.'}",
+        f"🪙 You opened *{used_item}*...{effect or 'It shimmered, but nothing happened.'}",
         parse_mode="Markdown"
     )
 
