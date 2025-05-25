@@ -1,5 +1,4 @@
 import os
-import migrate_pet
 
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler
 from handlers.start import start
