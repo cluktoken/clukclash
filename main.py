@@ -18,6 +18,10 @@ from handlers.title import set_title
 from handlers.loot_features import open_loot, sell_all
 from handlers.skin import set_skin
 from db.database import upgrade_schema
+from handlers.cluck_pet_system_full import (
+    pet, feed, namepet, dresspet, pet_battle,
+    pet_leaderboard, pet_marketplace, pet_fusion
+)
 upgrade_schema()
 
 
@@ -46,6 +50,14 @@ def main():
     application.add_handler(CommandHandler("skin", set_skin))
     application.add_handler(CommandHandler("open", open_loot))
     application.add_handler(CommandHandler("sellall", sell_all))
+    application.add_handler(CommandHandler("pet", pet))
+    application.add_handler(CommandHandler("feed", feed))
+    application.add_handler(CommandHandler("namepet", namepet))
+    application.add_handler(CommandHandler("dresspet", dresspet))
+    application.add_handler(CommandHandler("petbattle", pet_battle))
+    application.add_handler(CommandHandler("pet_leaderboard", pet_leaderboard))
+    application.add_handler(CommandHandler("pet_marketplace", pet_marketplace))
+    application.add_handler(CommandHandler("pet_fusion", pet_fusion))
 
 
 
