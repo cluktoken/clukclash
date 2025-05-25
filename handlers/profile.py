@@ -35,7 +35,7 @@ async def profile(update: Update, context: ContextTypes.DEFAULT_TYPE):
     xp_bar = "🟩" * (xp // 10) + "⬜" * (10 - xp // 10)
     percent = f"{xp}%"
 
-    reply = (
+reply = (
     f"👤 <b>Profile of {username}</b>\n\n"
     f"🎖️ <b>Level:</b> {level}    <b>XP:</b> {xp}/100 ({percent})\n"
     f"{xp_bar}\n\n"
