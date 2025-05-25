@@ -8,7 +8,8 @@ DB_PATH = "db/crypto_game.db"
 def init_db():
     conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
-    c.execute("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, username TEXT, bits INTEGER DEFAULT 0, cash REAL DEFAULT 1000)")
+    c.execute("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, username TEXT, bits INTEGER DEFAULT 0, cash REAL DEFAULT 1000,  last_daily TEXT)")
+    c.execute("CREATE TABLE IF NOT EXISTS inventory (user_id INTEGER, item TEXT")
     conn.commit()
     conn.close()
 
@@ -72,21 +73,6 @@ def get_user_portfolio(user_id):
     conn.close()
     return result
 
-def init_db():
-    conn = sqlite3.connect(DB_PATH)
-    c = conn.cursor()
-    c.execute("""
-        CREATE TABLE IF NOT EXISTS users (
-            id INTEGER PRIMARY KEY,
-            username TEXT,
-            bits INTEGER DEFAULT 0,
-            cash REAL DEFAULT 1000,
-            last_daily TEXT
-        )
-    """)
-    conn.commit()
-    conn.close()
-
 def give_daily_bonus(user_id):
     conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
@@ -100,6 +86,32 @@ def give_daily_bonus(user_id):
             next_claim = last_claim + timedelta(hours=24)
             wait_time = (next_claim - now).seconds // 3600
             return f"⏳ You've already claimed your daily reward. Try again in ~{wait_time}h."
+
+def get_xp(user_id):
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    c.execute("SELECT xp, level FROM users WHERE id = ?", (user_id,))
+    row = c.fetchone()
+    conn.close()
+    return row if row else (0, 1)
+
+def level_up(user_id):
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    c.execute("UPDATE users SET xp = xp - 100, level = level + 1 WHERE id = ?", (user_id,))
+    conn.commit()
+    c.execute("SELECT level FROM users WHERE id = ?", (user_id,))
+    new_level = c.fetchone()[0]
+    conn.close()
+    return new_level
+
+def get_inventory(user_id):
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    c.execute("SELECT item FROM inventory WHERE user_id = ?", (user_id,))
+    items = [row[0] for row in c.fetchall()]
+    conn.close()
+    return items
 
     # reward
     reward = 25
