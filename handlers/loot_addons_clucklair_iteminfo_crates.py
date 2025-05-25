@@ -42,8 +42,7 @@ async def clucklair(update: Update, context: ContextTypes.DEFAULT_TYPE):
     inventory = get_inventory(user_id)
     if "Cluck Relic 💎🐔" in inventory:
         await update.message.reply_text(
-            "🏛️ Welcome to the secret Cluck Lair!"
-            "Here you can access exclusive relic upgrades and ancient clucker wisdom. 🧙‍♂️🐔"
+            "🏛️ Welcome to the secret Cluck Lair! Here you can access exclusive relic upgrades and ancient clucker wisdom. 🧙‍♂️🐔"
         )
     else:
         await update.message.reply_text("🚫 You need a Cluck Relic 💎🐔 to enter the /clucklair.")
@@ -52,12 +51,10 @@ async def open_common(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     item = random.choice(RARITY_LOOT["common"])
     add_to_inventory(user_id, item)
-    await update.message.reply_text(f"📦 You opened a Common Cluck Crate!
-🎁 Loot: *{item}*", parse_mode="Markdown")
+    await update.message.reply_text(f"📦 You opened a Common Cluck Crate! 🎁 Loot: *{item}*", parse_mode="Markdown")
 
 async def open_epic(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     item = random.choice(RARITY_LOOT["epic"])
     add_to_inventory(user_id, item)
-    await update.message.reply_text(f"🚀 You opened an Epic Crate!
-🎁 Loot: *{item}*", parse_mode="Markdown")
+    await update.message.reply_text(f"🚀 You opened an Epic Crate! 🎁 Loot: *{item}*", parse_mode="Markdown")
