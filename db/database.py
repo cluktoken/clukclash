@@ -3,7 +3,7 @@ from utils.price_simulator import get_price
 from datetime import datetime, timedelta
 
 
-DB_PATH = "db/crypto_game.db"
+DB_PATH = "/data/crypto_game.db"
 
 def init_db():
     conn = sqlite3.connect(DB_PATH)
@@ -118,3 +118,25 @@ def get_inventory(user_id):
     items = [row[0] for row in c.fetchall()]
     conn.close()
     return items
+
+def update_xp(user_id, new_xp):
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    c.execute("UPDATE users SET xp = ? WHERE id = ?", (new_xp, user_id))
+    conn.commit()
+    conn.close()
+
+def add_to_inventory(user_id, item):
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    c.execute("INSERT INTO inventory (user_id, item) VALUES (?, ?)", (user_id, item))
+    conn.commit()
+    conn.close()
+
+def reset_daily(user_id):
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    c.execute("UPDATE users SET last_daily = NULL WHERE id = ?", (user_id,))
+    conn.commit()
+    conn.close()
+
