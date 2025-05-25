@@ -35,15 +35,16 @@ async def profile(update: Update, context: ContextTypes.DEFAULT_TYPE):
     xp_bar = "🟩" * (xp // 10) + "⬜" * (10 - xp // 10)
     percent = f"{xp}%"
 
-reply = (
-    f"👤 <b>Profile of {username}</b>\n\n"
-    f"🎖️ <b>Level:</b> {level}    <b>XP:</b> {xp}/100 ({percent})\n"
-    f"{xp_bar}\n\n"
-    f"💰 <b>BITS:</b> {bits}    💵 <b>Cash:</b> ${cash:.2f}\n"
-    f"🎒 <b>Items:</b> {len(inventory)}\n"
-    f"🏅 <b>Badges:</b> {badges}\n\n"
-    f"🏷️ <b>Title:</b> {title or 'None'}\n"
-    f"🎨 <b>Skin:</b> {skin or 'Default'}\n\n"
-    f"🌟 <i>Keep tapping, trading, and collecting to rise in the ranks!</i>"
+    reply = (
+        f"👤 <b>Profile of {username}</b>\n\n"
+        f"🎖️ <b>Level:</b> {level}    <b>XP:</b> {xp}/100 ({percent})\n"
+        f"{xp_bar}\n\n"
+        f"💰 <b>BITS:</b> {bits}    💵 <b>Cash:</b> ${cash:.2f}\n"
+        f"🎒 <b>Items:</b> {len(inventory)}\n"
+        f"🏅 <b>Badges:</b> {badges}\n\n"
+        f"🏷️ <b>Title:</b> {title or 'None'}\n"
+        f"🎨 <b>Skin:</b> {skin or 'Default'}\n\n"
+        f"🌟 <i>Keep tapping, trading, and collecting to rise in the ranks!</i>"
     )
-await update.message.reply_text(reply, parse_mode="HTML")
+
+    await update.message.reply_text(reply, parse_mode="HTML")
