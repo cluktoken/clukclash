@@ -46,5 +46,4 @@ reply = (
     f"🎨 <b>Skin:</b> {skin or 'Default'}\n\n"
     f"🌟 <i>Keep tapping, trading, and collecting to rise in the ranks!</i>"
     )
-
-    await update.message.reply_text(reply, parse_mode="HTML")
+await update.message.reply_text(reply, parse_mode="HTML")
