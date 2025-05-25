@@ -124,8 +124,7 @@ async def reroll(update: Update, context: ContextTypes.DEFAULT_TYPE):
     conn.close()
 
     new_msg = drop_loot(user_id)
-    await update.message.reply_text(f"♻️ You rerolled *{lost}*...
-{new_msg}", parse_mode="Markdown")
+    await update.message.reply_text(f"♻️ You rerolled *{lost}*...{new_msg}", parse_mode="Markdown")
 
 async def collection(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
