@@ -11,6 +11,7 @@ from db.database import init_db, get_user_portfolio, get_price
 from handlers.inventory import inventory
 from handlers.levelup import levelup
 from handlers.profile import profile
+from handlers.reroll import reroll
 from handlers.cluckonomy import cluckonomy
 from handlers.dividends import dividends
 from handlers.passive_income import passive_income
