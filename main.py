@@ -77,6 +77,7 @@ def main():
     application.add_handler(CommandHandler("craftmenu", craft_menu))
     application.add_handler(CallbackQueryHandler(handle_craft_click, pattern="^craft_"))
     application.add_handler(CommandHandler("trade", trade))
+import migrate_pet
 
     
     application.run_polling()
