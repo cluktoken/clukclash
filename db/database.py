@@ -8,7 +8,7 @@ DB_PATH = "/data/crypto_game.db"
 def init_db():
     conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
-    c.execute("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, username TEXT, bits INTEGER DEFAULT 0, cash REAL DEFAULT 1000, xp INTEGER DEFAULT 0, level INTEGER DEFAULT 1, title TEXT, skin TEXT, last_tap TEXT, last_daily TEXT)")
+    c.execute("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, username TEXT, bits INTEGER DEFAULT 0, cash REAL DEFAULT 1000, xp INTEGER DEFAULT 0, level INTEGER DEFAULT 1, pet_xp INTEGER DEFAULT 0, pet_name TEXT, pet_skin TEXT, title TEXT, skin TEXT, last_tap TEXT, last_daily TEXT)")
     c.execute("CREATE TABLE IF NOT EXISTS inventory (user_id INTEGER, item TEXT)")
     conn.commit()
     conn.close()
