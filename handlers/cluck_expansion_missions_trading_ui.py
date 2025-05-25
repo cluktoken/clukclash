@@ -67,5 +67,4 @@ async def handle_craft_click(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
 # 🧑‍🤝‍🧑 Trading stub
 async def trade(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("🤝 Player-to-player trading is coming soon!
-You'll be able to send and receive loot securely via the bot.")
+    await update.message.reply_text("🤝 Player-to-player trading is coming soon! You'll be able to send and receive loot securely via the bot.")
