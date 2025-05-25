@@ -8,6 +8,8 @@ from handlers.portfolio import portfolio
 from handlers.market import market
 from handlers.leaderboard import leaderboard
 from db.database import init_db, get_user_portfolio, get_price
+from handlers.inventory import inventory
+from handlers.levelup import levelup
 
 
 DB_PATH = "/data/crypto_game.db"
@@ -25,6 +27,8 @@ def main():
     application.add_handler(CommandHandler("daily", daily))
     application.add_handler(CommandHandler("leaderboard", leaderboard))
     application.add_handler(CommandHandler("portfolio", portfolio))
+    application.add_handler(CommandHandler("inventory", inventory))
+    application.add_handler(CommandHandler("levelup", levelup))
 
     application.run_polling()
 
