@@ -8,7 +8,7 @@ DB_PATH = "/data/crypto_game.db"
 def init_db():
     conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
-    c.execute("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, username TEXT, bits INTEGER DEFAULT 0, cash REAL DEFAULT 1000, xp INTEGER DEFAULT 0, level INTEGER DEFAULT 1, last_daily TEXT)")
+    c.execute("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, username TEXT, bits INTEGER DEFAULT 0, cash REAL DEFAULT 1000, xp INTEGER DEFAULT 0, level INTEGER DEFAULT 1, title TEXT, skin TEXT, last_tap TEXT, last_daily TEXT)")
     c.execute("CREATE TABLE IF NOT EXISTS inventory (user_id INTEGER, item TEXT)")
     conn.commit()
     conn.close()
@@ -35,7 +35,11 @@ def trade_token(user_id, token, amount, action):
     c = conn.cursor()
     c.execute("SELECT bits, cash FROM users WHERE id = ?", (user_id,))
     row = c.fetchone()
+    if not row:
+        conn.close()
+        return "❌ User not found. Try using /start or /tap first."
     bits, cash = row
+
     total_cost = amount * price
     if action == "buy":
         if cash >= total_cost:
