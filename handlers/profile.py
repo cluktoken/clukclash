@@ -45,6 +45,6 @@ async def profile(update: Update, context: ContextTypes.DEFAULT_TYPE):
     f"🏷️ <b>Title:</b> {title or 'None'}\n"
     f"🎨 <b>Skin:</b> {skin or 'Default'}\n\n"
     f"🌟 <i>Keep tapping, trading, and collecting to rise in the ranks!</i>"
-)
+    )
 
     await update.message.reply_text(reply, parse_mode="HTML")
