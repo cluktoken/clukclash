@@ -25,22 +25,14 @@ async def cluckonomy(update: Update, context: ContextTypes.DEFAULT_TYPE):
     bits_price = get_price("BITS")
 
     await update.message.reply_text(
-        f"📊 *Cluckonomy Dashboard:*
-"
-        f"👥 *Players:* {users}
-"
-        f"💰 *Total $BITS:* {int(total_bits)}
-"
-        f"💹 *$BITS Price:* `${bits_price:.2f}`
-"
-        f"🧮 *Avg $BITS/Player:* {int(avg_bits)}
-"
-        f"🥇 *Top Holder:* `{top_user}` – {top_bits} BITS
-"
-        f"📦 *Total Loot Items:* {total_items}
-"
-        f"🐣 *Avg Player Level:* {avg_level:.1f}
-"
+        f"📊 *Cluckonomy Dashboard:*"
+        f"👥 *Players:* {users}"
+        f"💰 *Total $BITS:* {int(total_bits)}"
+        f"💹 *$BITS Price:* `${bits_price:.2f}`"
+        f"🧮 *Avg $BITS/Player:* {int(avg_bits)}"
+        f"🥇 *Top Holder:* `{top_user}` – {top_bits} BITS"
+        f"📦 *Total Loot Items:* {total_items}"
+        f"🐣 *Avg Player Level:* {avg_level:.1f}"
         f"🐔 *Total Pet XP:* {total_pet_xp}",
         parse_mode="Markdown"
     )
