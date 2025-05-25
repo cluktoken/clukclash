@@ -20,7 +20,7 @@ from handlers.passive_income import passive_income
 from handlers.title import set_title
 from handlers.cluck_engagement_features import craft, mission, pet_marketplace
 from handlers.cluck_expansion_missions_trading_ui import daily_missions, craft_menu, handle_craft_click, trade
-from handlers.loot_features import open_loot, sell_all
+from handlers.loot_features import open_loot, sell_all, determine_rarity
 from handlers.skin import set_skin
 from handlers.loot_addons_clucklair_iteminfo_crates import iteminfo, clucklair, open_common, open_epic
 
