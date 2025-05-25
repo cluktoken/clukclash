@@ -25,20 +25,11 @@ async def profile(update: Update, context: ContextTypes.DEFAULT_TYPE):
     skin_text = f"🎨 *Skin:* `{skin}`\n" if skin else ""
 
     reply = (
-        f"👤 *Profile of {username}*
-
-"
-        f"🎖️ *Level:* {level}
-"
-        f"⚡ *XP:* `{xp}/100`
-{xp_bar}
-
-"
-        f"💰 *BITS:* `{bits}` | 💵 *Cash:* `${cash:.2f}`
-"
-        f"🎒 *Items Collected:* {len(inventory)}
-
-"
+        f"👤 *Profile of {username}*"
+        f"🎖️ *Level:* {level}"
+        f"⚡ *XP:* `{xp}/100` {xp_bar}"
+        f"💰 *BITS:* `{bits}` | 💵 *Cash:* `${cash:.2f}`"
+        f"🎒 *Items Collected:* {len(inventory)}"
         f"{title_text}{skin_text}"
         f"🌟 Keep tapping and upgrading!"
     )
