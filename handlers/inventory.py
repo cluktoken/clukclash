@@ -9,8 +9,7 @@ async def inventory(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text("🎒 Your inventory is empty.")
         return
 
-    reply = "🎒 *Your Inventory:*
-"
+    reply = "🎒 *Your Inventory:*"
     for item in items:
         reply += f"• {item}\n"
     await update.message.reply_text(reply, parse_mode="Markdown")
