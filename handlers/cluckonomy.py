@@ -10,10 +10,8 @@ async def cluckonomy(update: Update, context: ContextTypes.DEFAULT_TYPE):
     users, total_bits = c.fetchone()
     conn.close()
     await update.message.reply_text(
-        f"📊 *Cluckonomy Stats:*
-"
-        f"• Players: {users}
-"
+        f"📊 *Cluckonomy Stats:*"
+        f"• Players: {users}"
         f"• Total $BITS in circulation: {int(total_bits)}",
         parse_mode="Markdown"
     )
