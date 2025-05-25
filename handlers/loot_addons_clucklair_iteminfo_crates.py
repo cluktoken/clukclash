@@ -42,8 +42,7 @@ async def clucklair(update: Update, context: ContextTypes.DEFAULT_TYPE):
     inventory = get_inventory(user_id)
     if "Cluck Relic 💎🐔" in inventory:
         await update.message.reply_text(
-            "🏛️ Welcome to the secret Cluck Lair!
-"
+            "🏛️ Welcome to the secret Cluck Lair!"
             "Here you can access exclusive relic upgrades and ancient clucker wisdom. 🧙‍♂️🐔"
         )
     else:
