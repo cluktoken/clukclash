@@ -103,10 +103,7 @@ async def sell_all(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     breakdown = "\n".join([f"• {qty} {rarity.capitalize()}" for rarity, qty in count.items()])
     await update.message.reply_text(
-        f"🧾 Sold:
-{breakdown}
-
-💰 Total earned: `{total}` $BITS",
+        f"🧾 Sold: {breakdown} 💰 Total earned: `{total}` $BITS",
         parse_mode="Markdown"
     )
 
