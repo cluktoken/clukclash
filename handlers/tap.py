@@ -28,8 +28,7 @@ async def tap(update: Update, context: ContextTypes.DEFAULT_TYPE):
     level_up_text = ""
     if new_xp >= 100:
         new_level = level_up(user_id)
-        level_up_text = f"🎉 *LEVEL UP!* You are now Level {new_level}!
-"
+        level_up_text = f"🎉 *LEVEL UP!* You are now Level {new_level}!"
     else:
         update_xp(user_id, new_xp)
 
@@ -38,15 +37,12 @@ async def tap(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if random.random() < 0.12:
         loot_item = random.choice(["Mystery Egg 🥚", "Golden Feather ✨", "Corn Nugget 🌽"])
         add_to_inventory(user_id, loot_item)
-        loot_text = f"🎁 BONUS DROP: You found a *{loot_item}*!
-"
+        loot_text = f"🎁 BONUS DROP: You found a *{loot_item}*!"
 
     # Build reply message
     reply = (
-        f"{emoji} *You tapped and earned* `{reward}` $BITS!
-"
-        f"🔋 +{xp_gain} XP
-"
+        f"{emoji} *You tapped and earned* `{reward}` $BITS!"
+        f"🔋 +{xp_gain} XP"
         f"{level_up_text}"
         f"{loot_text}"
     )
