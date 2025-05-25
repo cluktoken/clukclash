@@ -1,5 +1,5 @@
 import os
-from telegram.ext import Application, CommandHandler
+from telegram.ext import Application, CommandHandler, CallbackQueryHandler
 from handlers.start import start
 from handlers.tap import tap
 from handlers.trade import buy, sell
@@ -16,7 +16,7 @@ from handlers.dividends import dividends
 from handlers.passive_income import passive_income
 from handlers.title import set_title
 from handlers.cluck_engagement_features import craft, mission, pet_marketplace
-
+from handlers.cluck_expansion_missions_trading_ui import daily_missions, craft_menu, handle_craft_click, trade
 from handlers.loot_features import open_loot, sell_all
 from handlers.skin import set_skin
 from handlers.loot_addons_clucklair_iteminfo_crates import iteminfo, clucklair, open_common, open_epic
@@ -72,7 +72,10 @@ def main():
     application.add_handler(CommandHandler("open_epic", open_epic))
     application.add_handler(CommandHandler("craft", craft))
     application.add_handler(CommandHandler("mission", mission))
-
+    application.add_handler(CommandHandler("dailymissions", daily_missions))
+    application.add_handler(CommandHandler("craftmenu", craft_menu))
+    application.add_handler(CallbackQueryHandler(handle_craft_click, pattern="^craft_"))
+    application.add_handler(CommandHandler("trade", trade))
     
     application.run_polling()
 
