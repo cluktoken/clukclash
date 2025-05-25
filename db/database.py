@@ -85,7 +85,13 @@ def give_daily_bonus(user_id):
         if now - last_claim < timedelta(hours=24):
             next_claim = last_claim + timedelta(hours=24)
             wait_time = (next_claim - now).seconds // 3600
-            return f"⏳ You've already claimed your daily reward. Try again in ~{wait_time}h."
+            return f"⏳ Already claimed. Come back in ~{wait_time}h."
+
+    reward = 25
+    c.execute("UPDATE users SET bits = bits + ?, last_daily = ? WHERE id = ?", (reward, now.isoformat(), user_id))
+    conn.commit()
+    conn.close()
+    return f"🎁 You claimed your daily bonus: {reward} $BITS!"
 
 def get_xp(user_id):
     conn = sqlite3.connect(DB_PATH)
@@ -112,10 +118,3 @@ def get_inventory(user_id):
     items = [row[0] for row in c.fetchall()]
     conn.close()
     return items
-
-    # reward
-    reward = 25
-    c.execute("UPDATE users SET bits = bits + ?, last_daily = ? WHERE id = ?", (reward, now.isoformat(), user_id))
-    conn.commit()
-    conn.close()
-    return f"🎁 You claimed your daily bonus: {reward} $BITS!"
