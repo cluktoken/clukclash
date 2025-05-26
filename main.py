@@ -9,6 +9,7 @@ from handlers.portfolio import portfolio
 from handlers.market import market
 from handlers.leaderboard import leaderboard
 from db.database import init_db, get_user_portfolio, get_price, upgrade_schema, add_to_inventory, get_inventory, get_xp, add_to_inventory
+from handlers.npc_interaction import npc_event
 
 from handlers.inventory import inventory
 from handlers.levelup import levelup
@@ -79,6 +80,7 @@ def main():
     application.add_handler(CommandHandler("craftmenu", craft_menu))
     application.add_handler(CallbackQueryHandler(handle_craft_click, pattern="^craft_"))
     application.add_handler(CommandHandler("trade", trade))
+    application.add_handler(CommandHandler("npc", npc_event))
 
     
     application.run_polling()
