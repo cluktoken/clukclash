@@ -10,7 +10,6 @@ from handlers.market import market
 from handlers.leaderboard import leaderboard
 from db.database import init_db, get_user_portfolio, get_price, upgrade_schema, add_to_inventory, get_inventory, get_xp, add_to_inventory
 from handlers.npc_interaction import npc
-from handlers.npc_interaction import npc_event
 
 from handlers.inventory import inventory
 from handlers.levelup import levelup
