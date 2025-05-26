@@ -1,24 +1,22 @@
-# npc_interaction.py
-
 from telegram import Update
 from telegram.ext import ContextTypes
-from db.database import add_tokens
 import random
+from db.database import add_tokens  # Optional if your NPCs give/take bits
 
-NPC_QUOTES = [
-    "👀 ClucksterBot: 'You again? Don't lose all your BITS!'",
-    "🧙‍♂️ MysticCluck: 'One day you’ll hatch into greatness… maybe.'",
-    "🦹 Rogue Rooster: *steals* 10 $BITS! 🏃💨",
-    "🎁 FarmerCluck: 'Take this gift, kid.' (+10 BITS)"
-]
-
-async def npc(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def npc_event(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
-    choice = random.choice(NPC_QUOTES)
+    npc_actions = [
+        ("😏 *Rival Cluck*: Heard you missed a tap streak again... pathetic.", 0),
+        ("🧙 *Wise Cluck*: Here’s some advice — and 10 free $BITS.", +10),
+        ("🦹 *Thief Cluck*: Oops, I may have 'borrowed' 5 $BITS. 💸", -5),
+        ("👻 *Ghost Cluck*: You’ll never hatch the golden egg. Or will you?", 0),
+        ("🎩 *Investor Cluck*: I’ll match your hustle. +15 $BITS for style.", +15)
+    ]
 
-    if "steals" in choice:
-        add_tokens(user_id, "BITS", -10)
-    elif "gift" in choice:
-        add_tokens(user_id, "BITS", 10)
+    message, bits = random.choice(npc_actions)
 
-    await update.message.reply_text(choice, parse_mode="Markdown")
+    # Apply BITS reward or penalty if needed
+    if bits != 0:
+        add_tokens(user_id, "BITS", bits)
+
+    await update.message.reply_text(message, parse_mode="Markdown")
