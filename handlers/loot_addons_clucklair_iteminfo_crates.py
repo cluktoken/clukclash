@@ -67,10 +67,17 @@ async def open_common(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     item = random.choice(RARITY_LOOT["common"])
     add_to_inventory(user_id, item)
-    await update.message.reply_text(f"📦 You opened a Common Cluck Crate! 🎁 Loot: *{item}*", parse_mode="Markdown")
+    await update.message.reply_text(
+        f"📦 You opened a Common Cluck Crate! 🎁 Loot: *{item}*", parse_mode="Markdown"
+    )
 
 async def open_epic(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
+    item = random.choice(RARITY_LOOT["epic"])
+    add_to_inventory(user_id, item)
+    await update.message.reply_text(
+        f"🚀 You opened an Epic Crate! 🎁 Loot: *{item}*", parse_mode="Markdown"
+    )
 
 
 
