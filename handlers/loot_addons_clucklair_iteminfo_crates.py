@@ -1,6 +1,6 @@
 from telegram import Update
 from telegram.ext import ContextTypes
-from db.database import get_inventory, get_xp
+from db.database import get_inventory, get_xp, add_to_inventory
 import random
 
 RARITY_INFO = {
@@ -34,6 +34,11 @@ RARITY_LOOT = {
     ]
 }
 
+def determine_rarity(item_name):
+    for rarity, items in RARITY_LOOT.items():
+        if item_name in items:
+            return rarity
+    return "common"
 
 async def iteminfo(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not context.args:
@@ -68,7 +73,8 @@ async def open_common(update: Update, context: ContextTypes.DEFAULT_TYPE):
     item = random.choice(RARITY_LOOT["common"])
     add_to_inventory(user_id, item)
     await update.message.reply_text(
-        f"📦 You opened a Common Cluck Crate! 🎁 Loot: *{item}*", parse_mode="Markdown"
+        f"📦 You opened a Common Cluck Crate! 🎁 Loot: *{item}*",
+        parse_mode="Markdown"
     )
 
 async def open_epic(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -76,18 +82,6 @@ async def open_epic(update: Update, context: ContextTypes.DEFAULT_TYPE):
     item = random.choice(RARITY_LOOT["epic"])
     add_to_inventory(user_id, item)
     await update.message.reply_text(
-        f"🚀 You opened an Epic Crate! 🎁 Loot: *{item}*", parse_mode="Markdown"
+        f"🚀 You opened an Epic Crate! 🎁 Loot: *{item}*",
+        parse_mode="Markdown"
     )
-
-
-
-def determine_rarity(item_name):
-    for rarity, items in RARITY_LOOT.items():
-        if item_name in items:
-            return rarity
-    return "common"
-
-    
-    item = random.choice(RARITY_LOOT["epic"])
-    add_to_inventory(user_id, item)
-    await update.message.reply_text(f"🚀 You opened an Epic Crate! 🎁 Loot: *{item}*", parse_mode="Markdown")
