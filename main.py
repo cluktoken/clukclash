@@ -8,7 +8,8 @@ from handlers.daily import daily
 from handlers.portfolio import portfolio
 from handlers.market import market
 from handlers.leaderboard import leaderboard
-from db.database import init_db, get_user_portfolio, get_price, upgrade_schema
+from db.database import init_db, get_user_portfolio, get_price, upgrade_schema, add_to_inventory, get_inventory, get_xp, add_to_inventory
+
 from handlers.inventory import inventory
 from handlers.levelup import levelup
 from handlers.profile import profile
