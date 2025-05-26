@@ -12,7 +12,7 @@ NPC_QUOTES = [
     "🎁 FarmerCluck: 'Take this gift, kid.' (+10 BITS)"
 ]
 
-async def npc_event(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def npc(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     choice = random.choice(NPC_QUOTES)
 
