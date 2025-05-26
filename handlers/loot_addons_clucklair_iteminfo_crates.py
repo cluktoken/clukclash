@@ -71,6 +71,16 @@ async def open_common(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def open_epic(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
+
+
+
+def determine_rarity(item_name):
+    for rarity, items in RARITY_LOOT.items():
+        if item_name in items:
+            return rarity
+    return "common"
+
+    
     item = random.choice(RARITY_LOOT["epic"])
     add_to_inventory(user_id, item)
     await update.message.reply_text(f"🚀 You opened an Epic Crate! 🎁 Loot: *{item}*", parse_mode="Markdown")
